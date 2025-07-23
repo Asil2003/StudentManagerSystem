@@ -168,6 +168,27 @@ public class Main {
                     }
                     break;
 
+                case 9:
+                    if (students.isEmpty()) {
+                        System.out.println("No students available to evaluate lowest grade.");
+                    } else {
+                        double lowest = students.get(0).getGrade();
+                        for (Student student : students) {
+                            if (student.getGrade() < lowest) {
+                                lowest = student.getGrade();
+                            }
+                        }
+
+                        System.out.printf("Lowest Grade: %.2f%n", lowest);
+                        System.out.println("Student(s) with Lowest Grade:");
+                        for (Student student : students) {
+                            if (student.getGrade() == lowest) {
+                                student.displayInfo();
+                            }
+                        }
+                    }
+                    break;
+
                 case 14:
                     exit = true;
                     System.out.println("Exiting the system.");
