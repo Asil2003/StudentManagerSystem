@@ -189,6 +189,10 @@ public class Main {
                     }
                     break;
 
+                case 10:
+                    System.out.println("Total Students: " + students.size());
+                    break;
+
                 case 14:
                     exit = true;
                     System.out.println("Exiting the system.");
