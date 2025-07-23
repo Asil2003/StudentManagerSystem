@@ -207,6 +207,18 @@ public class Main {
                     }
                     break;
 
+                case 12:
+                    if (students.isEmpty()) {
+                        System.out.println("No students to sort.");
+                    } else {
+                        Collections.sort(students, Comparator.comparing(Student::getName, String.CASE_INSENSITIVE_ORDER));
+                        System.out.println("Students sorted by name (A-Z):");
+                        for (Student student : students) {
+                            student.displayInfo();
+                        }
+                    }
+                    break;
+
                 case 14:
                     exit = true;
                     System.out.println("Exiting the system.");
