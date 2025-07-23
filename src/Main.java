@@ -140,6 +140,19 @@ public class Main {
                     }
                     break;
 
+                case 7:
+                    if (students.isEmpty()) {
+                        System.out.println("No students available to calculate average.");
+                    } else {
+                        double total = 0;
+                        for (Student student : students) {
+                            total += student.getGrade();
+                        }
+                        double average = total / students.size();
+                        System.out.printf("Average Grade: %.2f%n", average);
+                    }
+                    break;
+
                 case 14:
                     exit = true;
                     System.out.println("Exiting the system.");
