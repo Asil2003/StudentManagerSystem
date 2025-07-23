@@ -1,15 +1,42 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.*;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<Student> students = new ArrayList<>();
+        boolean exit = false;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        while (!exit) {
+            System.out.println("\n----- Student Manager Menu -----");
+            System.out.println("1. Add Student");
+            System.out.println("2. View All Students");
+            System.out.println("3. Update Student Grade");
+            System.out.println("4. Delete Student");
+            System.out.println("5. Search Student by ID");
+            System.out.println("6. Search Student by Name");
+            System.out.println("7. Calculate Average Grade");
+            System.out.println("8. Show Highest Grade");
+            System.out.println("9. Show Lowest Grade");
+            System.out.println("10. Count Total Students");
+            System.out.println("11. Sort Students by Grade");
+            System.out.println("12. Sort Students by Name");
+            System.out.println("13. Clear All Students");
+            System.out.println("14. Exit");
+            System.out.print("Choose an option: ");
+
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 14:
+                    exit = true;
+                    System.out.println("Exiting the system.");
+                    break;
+                default:
+                    System.out.println("Option not implemented yet.");
+            }
         }
+
+        scanner.close();
     }
 }
