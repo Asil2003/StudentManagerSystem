@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -25,13 +26,31 @@ public class Main {
             System.out.print("Choose an option: ");
 
             int choice = scanner.nextInt();
-            scanner.nextLine();
+            scanner.nextLine(); // clear buffer
 
             switch (choice) {
+                case 1:
+                    System.out.print("Enter student name: ");
+                    String name = scanner.nextLine();
+
+                    System.out.print("Enter student ID: ");
+                    int id = scanner.nextInt();
+
+                    System.out.print("Enter student grade: ");
+                    double grade = scanner.nextDouble();
+                    scanner.nextLine(); // clear newline
+
+                    Student newStudent = new Student(name, id, grade);
+                    students.add(newStudent);
+
+                    System.out.println("Student added successfully!");
+                    break;
+
                 case 14:
                     exit = true;
                     System.out.println("Exiting the system.");
                     break;
+
                 default:
                     System.out.println("Option not implemented yet.");
             }
