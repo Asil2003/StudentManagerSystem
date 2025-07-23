@@ -219,6 +219,15 @@ public class Main {
                     }
                     break;
 
+                case 13:
+                    if (students.isEmpty()) {
+                        System.out.println("Student list is already empty.");
+                    } else {
+                        students.clear();
+                        System.out.println("All students have been removed.");
+                    }
+                    break;
+
                 case 14:
                     exit = true;
                     System.out.println("Exiting the system.");
