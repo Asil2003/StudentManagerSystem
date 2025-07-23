@@ -38,7 +38,7 @@ public class Main {
 
                     System.out.print("Enter student grade: ");
                     double grade = scanner.nextDouble();
-                    scanner.nextLine(); // clear newline
+                    scanner.nextLine();
 
                     Student newStudent = new Student(name, id, grade);
                     students.add(newStudent);
@@ -62,7 +62,7 @@ public class Main {
                     int updateId = scanner.nextInt();
                     scanner.nextLine();
 
-                    boolean found = false;
+                    boolean foundToUpdate = false;
                     for (Student student : students) {
                         if (student.getId() == updateId) {
                             System.out.print("Enter new grade: ");
@@ -70,12 +70,12 @@ public class Main {
                             scanner.nextLine();
                             student.setGrade(newGrade);
                             System.out.println("Grade updated successfully!");
-                            found = true;
+                            foundToUpdate = true;
                             break;
                         }
                     }
 
-                    if (!found) {
+                    if (!foundToUpdate) {
                         System.out.println("Student with ID " + updateId + " not found.");
                     }
                     break;
@@ -85,17 +85,11 @@ public class Main {
                     int deleteId = scanner.nextInt();
                     scanner.nextLine();
 
-                    boolean deleted = false;
-                    for (int i = 0; i < students.size(); i++) {
-                        if (students.get(i).getId() == deleteId) {
-                            students.remove(i);
-                            System.out.println("Student deleted successfully!");
-                            deleted = true;
-                            break;
-                        }
-                    }
+                    boolean removed = students.removeIf(student -> student.getId() == deleteId);
 
-                    if (!deleted) {
+                    if (removed) {
+                        System.out.println("Student deleted successfully!");
+                    } else {
                         System.out.println("Student with ID " + deleteId + " not found.");
                     }
                     break;
@@ -105,17 +99,17 @@ public class Main {
                     int searchId = scanner.nextInt();
                     scanner.nextLine();
 
-                    boolean foundId = false;
+                    boolean foundById = false;
                     for (Student student : students) {
                         if (student.getId() == searchId) {
                             System.out.println("Student found:");
                             student.displayInfo();
-                            foundId = true;
+                            foundById = true;
                             break;
                         }
                     }
 
-                    if (!foundId) {
+                    if (!foundById) {
                         System.out.println("Student with ID " + searchId + " not found.");
                     }
                     break;
@@ -124,32 +118,53 @@ public class Main {
                     System.out.print("Enter student name to search: ");
                     String searchName = scanner.nextLine().toLowerCase();
 
-                    boolean foundName = false;
+                    boolean foundByName = false;
                     for (Student student : students) {
                         if (student.getName().toLowerCase().contains(searchName)) {
-                            if (!foundName) {
-                                System.out.println("Matching student(s):");
+                            if (!foundByName) {
+                                System.out.println("Matching Students:");
                             }
                             student.displayInfo();
-                            foundName = true;
+                            foundByName = true;
                         }
                     }
 
-                    if (!foundName) {
-                        System.out.println("No students found with name containing \"" + searchName + "\".");
+                    if (!foundByName) {
+                        System.out.println("No students found with the name: " + searchName);
                     }
                     break;
 
                 case 7:
                     if (students.isEmpty()) {
-                        System.out.println("No students available to calculate average.");
+                        System.out.println("No students to calculate average grade.");
                     } else {
-                        double total = 0;
+                        double sum = 0;
                         for (Student student : students) {
-                            total += student.getGrade();
+                            sum += student.getGrade();
                         }
-                        double average = total / students.size();
-                        System.out.printf("Average Grade: %.2f%n", average);
+                        double avg = sum / students.size();
+                        System.out.printf("Average Grade: %.2f%n", avg);
+                    }
+                    break;
+
+                case 8:
+                    if (students.isEmpty()) {
+                        System.out.println("No students available to evaluate highest grade.");
+                    } else {
+                        double highest = students.get(0).getGrade();
+                        for (Student student : students) {
+                            if (student.getGrade() > highest) {
+                                highest = student.getGrade();
+                            }
+                        }
+
+                        System.out.printf("Highest Grade: %.2f%n", highest);
+                        System.out.println("Student(s) with Highest Grade:");
+                        for (Student student : students) {
+                            if (student.getGrade() == highest) {
+                                student.displayInfo();
+                            }
+                        }
                     }
                     break;
 
