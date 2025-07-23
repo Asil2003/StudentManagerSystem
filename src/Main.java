@@ -46,6 +46,17 @@ public class Main {
                     System.out.println("Student added successfully!");
                     break;
 
+                case 2:
+                    if (students.isEmpty()) {
+                        System.out.println("No students to display.");
+                    } else {
+                        System.out.println("\n--- Student List ---");
+                        for (Student student : students) {
+                            student.displayInfo();
+                        }
+                    }
+                    break;
+
                 case 14:
                     exit = true;
                     System.out.println("Exiting the system.");
