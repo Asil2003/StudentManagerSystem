@@ -80,6 +80,26 @@ public class Main {
                     }
                     break;
 
+                case 4:
+                    System.out.print("Enter student ID to delete: ");
+                    int deleteId = scanner.nextInt();
+                    scanner.nextLine();
+
+                    boolean deleted = false;
+                    for (int i = 0; i < students.size(); i++) {
+                        if (students.get(i).getId() == deleteId) {
+                            students.remove(i);
+                            System.out.println("Student deleted successfully!");
+                            deleted = true;
+                            break;
+                        }
+                    }
+
+                    if (!deleted) {
+                        System.out.println("Student with ID " + deleteId + " not found.");
+                    }
+                    break;
+
                 case 14:
                     exit = true;
                     System.out.println("Exiting the system.");
