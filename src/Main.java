@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Scanner;
 
 public class Main {
@@ -191,6 +193,18 @@ public class Main {
 
                 case 10:
                     System.out.println("Total Students: " + students.size());
+                    break;
+
+                case 11:
+                    if (students.isEmpty()) {
+                        System.out.println("No students to sort.");
+                    } else {
+                        Collections.sort(students, Comparator.comparingDouble(Student::getGrade));
+                        System.out.println("Students sorted by grade (ascending):");
+                        for (Student student : students) {
+                            student.displayInfo();
+                        }
+                    }
                     break;
 
                 case 14:
