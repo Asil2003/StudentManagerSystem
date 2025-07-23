@@ -100,6 +100,26 @@ public class Main {
                     }
                     break;
 
+                case 5:
+                    System.out.print("Enter student ID to search: ");
+                    int searchId = scanner.nextInt();
+                    scanner.nextLine();
+
+                    boolean foundId = false;
+                    for (Student student : students) {
+                        if (student.getId() == searchId) {
+                            System.out.println("Student found:");
+                            student.displayInfo();
+                            foundId = true;
+                            break;
+                        }
+                    }
+
+                    if (!foundId) {
+                        System.out.println("Student with ID " + searchId + " not found.");
+                    }
+                    break;
+
                 case 14:
                     exit = true;
                     System.out.println("Exiting the system.");
