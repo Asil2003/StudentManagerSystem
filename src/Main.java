@@ -120,6 +120,26 @@ public class Main {
                     }
                     break;
 
+                case 6:
+                    System.out.print("Enter student name to search: ");
+                    String searchName = scanner.nextLine().toLowerCase();
+
+                    boolean foundName = false;
+                    for (Student student : students) {
+                        if (student.getName().toLowerCase().contains(searchName)) {
+                            if (!foundName) {
+                                System.out.println("Matching student(s):");
+                            }
+                            student.displayInfo();
+                            foundName = true;
+                        }
+                    }
+
+                    if (!foundName) {
+                        System.out.println("No students found with name containing \"" + searchName + "\".");
+                    }
+                    break;
+
                 case 14:
                     exit = true;
                     System.out.println("Exiting the system.");
