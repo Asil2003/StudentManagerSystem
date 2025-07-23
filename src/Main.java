@@ -57,6 +57,29 @@ public class Main {
                     }
                     break;
 
+                case 3:
+                    System.out.print("Enter student ID to update: ");
+                    int updateId = scanner.nextInt();
+                    scanner.nextLine();
+
+                    boolean found = false;
+                    for (Student student : students) {
+                        if (student.getId() == updateId) {
+                            System.out.print("Enter new grade: ");
+                            double newGrade = scanner.nextDouble();
+                            scanner.nextLine();
+                            student.setGrade(newGrade);
+                            System.out.println("Grade updated successfully!");
+                            found = true;
+                            break;
+                        }
+                    }
+
+                    if (!found) {
+                        System.out.println("Student with ID " + updateId + " not found.");
+                    }
+                    break;
+
                 case 14:
                     exit = true;
                     System.out.println("Exiting the system.");
